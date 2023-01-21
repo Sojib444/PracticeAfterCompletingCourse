@@ -7,14 +7,17 @@ namespace Practice_Project.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-
-        public HomeController(ILogger<HomeController> logger)
+        public static  ITestModel? _testModel;
+        public HomeController(ILogger<HomeController> logger, ITestModel testModel)
         {
             _logger = logger;
+            _testModel = testModel;
         }
 
         public IActionResult Index()
         {
+            ITestModel testModel = new TestModel();
+            testModel.Simple();
             return View();
         }
 
